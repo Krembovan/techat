@@ -113,7 +113,7 @@ func New(username string, client *network.Client, database *db.Database,
 	}
 
 	return Model{
-		input:      ti,
+		input:      ta,
 		spinner:    s,
 		viewport:   vp,
 		help:       help.New(),
@@ -188,9 +188,6 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.panicTime = time.Now()
 			m.addSystemMsg("!!! PANIC ARMED: Press Ctrl+P again within 3s to wipe all data !!!")
 			return m, nil
-		default:
-			m.panicArmed = false
-
 		case msg.String() == "tab":
 			m.focusInput = !m.focusInput
 			if m.focusInput {
@@ -232,6 +229,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, m.reconnect()
 
 		default:
+			m.panicArmed = false
 			if m.focusInput {
 				if msg.Alt && msg.String() == "enter" {
 					m.input.InsertString("\n")
@@ -420,7 +418,7 @@ func (m *Model) loadPrivateChat(contact string) {
 		return
 	}
 
-	pubKey, hasKey := m.loadPubKey(contact)
+	pubKey, _ := m.loadPubKey(contact)
 	sharedKey := m.getSharedKey(pubKey)
 
 	for _, sm := range stored {
