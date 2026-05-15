@@ -18,10 +18,10 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 
-	"techat/internal/crypto"
-	"techat/internal/db"
-	"techat/internal/model"
-	"techat/internal/network"
+	"github.com/Krembovan/techat/internal/crypto"
+	"github.com/Krembovan/techat/internal/db"
+	"github.com/Krembovan/techat/internal/model"
+	"github.com/Krembovan/techat/internal/network"
 )
 
 const (

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="https://github.com/techat/techat"
+REPO="https://github.com/Krembovan/techat"
 INSTALL_DIR="${INSTALL_DIR:-/usr/local/bin}"
 TMP_DIR=$(mktemp -d)
 trap 'rm -rf "$TMP_DIR"' EXIT

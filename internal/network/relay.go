@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"techat/internal/model"
+	"github.com/Krembovan/techat/internal/model"
 )
 
 var upgrader = websocket.Upgrader{

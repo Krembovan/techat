@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"techat/internal/network"
+	"github.com/Krembovan/techat/internal/network"
 )
 
 func main() {

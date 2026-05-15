@@ -1,4 +1,4 @@
-module github.com/techat/techat
+module github.com/Krembovan/techat
 
 go 1.21
 

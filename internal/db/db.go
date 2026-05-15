@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"techat/internal/model"
+	"github.com/Krembovan/techat/internal/model"
 
 	_ "modernc.org/sqlite"
 )

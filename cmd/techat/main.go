@@ -10,10 +10,10 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"techat/internal/crypto"
-	"techat/internal/db"
-	"techat/internal/network"
-	"techat/internal/tui"
+	"github.com/Krembovan/techat/internal/crypto"
+	"github.com/Krembovan/techat/internal/db"
+	"github.com/Krembovan/techat/internal/network"
+	"github.com/Krembovan/techat/internal/tui"
 )
 
 func main() {
