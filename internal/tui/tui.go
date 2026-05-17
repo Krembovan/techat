@@ -112,10 +112,17 @@ func New(username string, client *network.Client, database *db.Database,
 		{ID: "global", Name: "🌐 Global", IsGlobal: true, Online: true},
 	}
 
+	initMessages := []string{
+		SystemMsgStyle.Render("--- Global Chat ---"),
+		SystemMsgStyle.Render("Messages are not encrypted and not saved"),
+		SystemMsgStyle.Render("Type /help for commands, Ctrl+P twice for panic"),
+	}
+
 	return Model{
 		input:      ta,
 		spinner:    s,
 		viewport:   vp,
+		messages:   initMessages,
 		help:       help.New(),
 		username:   username,
 		activeChat: "global",
@@ -276,6 +283,15 @@ func (m *Model) updateLayout() {
 	if vpWidth < 10 {
 		vpWidth = 10
 	}
+	vpHeight := m.height - inputHeight - statusHeight - 1
+	m.viewport.Width = vpWidth
+	m.viewport.Height = vpHeight
+	m.input.SetWidth(vpWidth - 2)
+	if len(m.messages) > 0 {
+		m.viewport.SetContent(strings.Join(m.messages, "\n"))
+		m.viewport.GotoBottom()
+	}
+}
 	vpHeight := m.height - inputHeight - statusHeight - 1
 
 	m.viewport.Width = vpWidth
