@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 # ===== TeChat One-Line Installer =====
 # Usage: bash <(curl -sf https://raw.githubusercontent.com/Krembovan/techat/main/install.sh)
@@ -18,9 +18,12 @@ case "$OS" in linux|darwin) ;; *) echo "Unsupported: $OS $ARCH"; exit 1 ;; esac
 # ---- Install Go if missing ----
 if ! command -v go &>/dev/null; then
 	echo -e "${YELLOW}Go not found. Downloading Go 1.22.3 for ${OS}/${ARCH}...${NC}"
+	rm -rf /tmp/go
 	curl -sfL "https://go.dev/dl/go1.22.3.${OS}-${ARCH}.tar.gz" | tar -C /tmp -xz
 	export PATH="/tmp/go/bin:$PATH"
 	export GOROOT="/tmp/go"
+	export GOPATH="/tmp/gopath"
+	mkdir -p "$GOPATH"
 	echo -e "${GREEN}Go installed from /tmp/go${NC}"
 fi
 
